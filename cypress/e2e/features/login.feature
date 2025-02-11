@@ -1,4 +1,4 @@
-@regression
+
 Feature: open orangeHRM
 
      Background: pre condition name
@@ -7,6 +7,6 @@ Feature: open orangeHRM
 @login 
      Scenario: Validate Home page
           Then I verify the browser title
-@regression
+@smoke
      Scenario: Validate Home page Failed
           Then I verify the browser title error message

@@ -6,5 +6,5 @@
   },
   "include": [
       "**/*.ts"
-, "cypress/e2e/step_definations/**/*.ts"    ]
+, "cypress/e2e/step_definitions/**/*.ts"    ]
 }
