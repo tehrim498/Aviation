@@ -1,4 +1,4 @@
-name: End-to-End Tests
+name: Regression End-to-End Tests
 on: push
 jobs:
   cypress-run:
@@ -10,12 +10,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  # Ensure correct Node.js version
+          node-version: 18  # Match your project’s Node.js version
         
       - name: Install Dependencies
-        run: npm ci  # Faster & ensures clean install
-      
+        run: npm ci  # Ensures a clean install
+        
       - name: Cypress Run
         uses: cypress-io/github-action@v6
         with:
-          install: false  # Since we already installed dependencies manually
+          install: false  # Since dependencies are installed manually
+        
+      - name: Debugging - Check Cypress Install
+        run: npx cypress info
