@@ -34,7 +34,7 @@ jobs:
 
       - name: Upload Cypress Videos & Screenshots (if tests fail)
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-results
           path: cypress/videos/  # Upload videos of failed tests
