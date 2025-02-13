@@ -1,4 +1,4 @@
-name: Ca Test
+name: End-to-end tests
 on: push
 jobs:
   cypress-run:
