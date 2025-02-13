@@ -1,34 +1,21 @@
-name: Cypress Tests
-
-on:
-  push:
-    branches:
-      - main # Change this if you want to run on a different branch
-  pull_request:
-
+name: End-to-End Tests
+on: push
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4 # Checks out the code
-
-      - name: Set Up Node.js
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18 # Use the Node.js version required for your project
-
+          node-version: 18  # Ensure correct Node.js version
+        
       - name: Install Dependencies
-        run: npm ci # Ensures a clean and consistent install
-
-      - name: Install Cypress & Cucumber Preprocessor
-        run: npx cypress install
-
-      - name: Run Cypress Tests
+        run: npm ci  # Faster & ensures clean install
+      
+      - name: Cypress Run
         uses: cypress-io/github-action@v6
         with:
-          install: false # Dependencies are already installed
-          browser: chrome # Run tests in Chrome
-          headed: false # Runs in headless mode
-
+          install: false  # Since we already installed dependencies manually
