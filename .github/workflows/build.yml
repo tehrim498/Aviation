@@ -1,9 +1,9 @@
 name: Cypress Tests
 
-on:  
+on:
   push:
     branches:
-      - main  # Change this if you want to run on a different branch
+      - main # Change this if you want to run on a different branch
   pull_request:
 
 jobs:
@@ -12,15 +12,15 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # Checks out the code
+        uses: actions/checkout@v4 # Checks out the code
 
       - name: Set Up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  # Use the Node.js version required for your project
+          node-version: 18 # Use the Node.js version required for your project
 
       - name: Install Dependencies
-        run: npm ci  # Ensures a clean and consistent install
+        run: npm ci # Ensures a clean and consistent install
 
       - name: Install Cypress & Cucumber Preprocessor
         run: npx cypress install
@@ -28,13 +28,7 @@ jobs:
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          install: false  # Dependencies are already installed
-          browser: chrome  # Run tests in Chrome
-          headed: false  # Runs in headless mode
+          install: false # Dependencies are already installed
+          browser: chrome # Run tests in Chrome
+          headed: false # Runs in headless mode
 
-      - name: Upload Cypress Videos & Screenshots (if tests fail)
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-results
-          path: cypress/videos/  # Upload videos of failed tests
