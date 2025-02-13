@@ -1,12 +1,11 @@
 
-Feature: open orangeHRM
+Feature: verify login for ca
 
-     Background: pre condition name
-          Given I navigate to home page
-          When I verify the logo on page
-@login 
-     Scenario: Validate Home page
-          Then I verify the browser title
-@smoke
-     Scenario: Validate Home page Failed
-          Then I verify the browser title error message
+     Background: Navigating to login from dashboard
+          Given I navigate to the Dashboard Page
+
+     Scenario: Verify elements on the Login Page
+          Given I navigate to the Login Page
+          Then I should see the email field displayed
+          And I should see the password field displayed
+          And I should see the login button displayed
